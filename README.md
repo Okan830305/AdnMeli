@@ -37,8 +37,10 @@ Api para la validacion de el DNA para comprobar si se es o no mutante.
         - Todos los strings deben ser del mismo tamaño y concordante a la cantidad de filas (NxN)
         Nota: En caso de no cumplirse estas restricciones la api deveuelve la misma respuesta para no mutante 403-Forbidden.
     
-    O puede usar postman para consumir dichos Endpoints:
-    ![enter image description here](https://raw.githubusercontent.com/Okan830305/AdnMeli.git/master/img/Postman.png)
+    
+O puede usar postman para consumir dichos Endpoints:
+
+![Postman](https://raw.githubusercontent.com/Okan830305/AdnMeli/master/img/Postman.png?token=AHRIG3SYP62HEXMRERFRA3S7BEGWY "POST")    
         
 
 
