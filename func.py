@@ -5,7 +5,7 @@ class responseIsMutant(TypedDict):
     msj: str
     valid: bool
 
-class ADN:
+class Mutants:
     @staticmethod
     def isMutant(cadenaAdn):
         ResIsMutant = responseIsMutant
@@ -45,58 +45,51 @@ class ADN:
             diag11 = 1;diag12 = 1
             diag21 = 1;diag22 = 1
             while j < columnas:
-                #check valid char
+                #Validacion de Caracteres
                 if(cadenaAdn[i][j] != 'A' and cadenaAdn[i][j] != 'T' and cadenaAdn[i][j] != 'C' and cadenaAdn[i][j] != 'G'):
                     ResIsMutant.idMsj = 3
                     ResIsMutant.msj = 'caracter no soportado'
                     ResIsMutant.valid = False
                     return ResIsMutant
-                    # print('unsupported character')
-                    # return False
 
-                #check horizontal
+                #Validacion forma horizontal
                 if j+1 < columnas and cadenaAdn[i][j] == cadenaAdn[i][j+1] :
-                    #print('%s:%s == %s:%s'%(j,cadenaAdn[i][j],j+1,cadenaAdn[i][j+1]))
                     hor = hor + 1
                 else:
                     if hor >= MinLenghtArray :
                         countHorizontal = countHorizontal + 1
                     hor = 1
-                #check vertical
+                    
+                #validacion vertical
                 if j+1 < columnas and cadenaAdn[j][i] == cadenaAdn[j+1][i] :
-                    #print('i:%s %s:%s == %s:%s'%(i,j,cadenaAdn[j][i],j+1,cadenaAdn[j+1][i]))
                     vert = vert + 1
                 else:
                     if vert >= MinLenghtArray :
                         countVertical = countVertical + 1
                     vert = 1
 
-                #check oblicua \
+                #Validacion diagonal izquierda - derecha 
                 if j+i+1 < columnas and cadenaAdn[j][j+i] == cadenaAdn[j+1][j+i+1]:
-                    #print('i:%s  %s,%s:%s == %s,%s:%s'%(i,j,j+i,cadenaAdn[j][j+i],j+1,j+i+1,cadenaAdn[j+1][j+i+1]))
                     diag11 = diag11 + 1
                 else:
                     if diag11 >= MinLenghtArray :
                         countDiagLR = countDiagLR + 1
                     diag11 = 1
                 if j+i>j and j+i+1 < columnas and cadenaAdn[j+i][j] == cadenaAdn[j+i+1][j+1]:
-                    #print('i:%s  %s,%s:%s == %s,%s:%s'%(i,j,j+i,cadenaAdn[j][j+i],j+1,j+i+1,cadenaAdn[j+1][j+i+1]))
                     diag12 = diag12 + 1
                 else:
                     if diag12 >= MinLenghtArray :
                         countDiagLR = countDiagLR + 1
                     diag12 = 1
 
-                #check oblicua /
+                #Validacion diagonal derecha - izquiera
                 if columnas-1-j+i < columnas and j+1 < columnas and cadenaAdn[j][columnas-1-j+i] == cadenaAdn[j+1][columnas-1-j+i-1]:
-                    #print('i:%s  %s,%s:%s == %s,%s:%s'%(i,j,j+i,cadenaAdn[j][j+i],j+1,j+i+1,cadenaAdn[j+1][j+i+1]))
                     diag21 = diag21 + 1
                 else:
                     if diag21 >= MinLenghtArray :
                         countDiagRL = countDiagRL + 1
                     diag21 = 1
                 if i > 0 and columnas-1-j-i-1 >= 0 and j+1 < columnas and cadenaAdn[j][columnas-1-j-i] == cadenaAdn[j+1][columnas-1-j-i-1]:
-                    #print('i:%s  %s,%s:%s == %s,%s:%s'%(i,j,j+i,cadenaAdn[j][j+i],j+1,j+i+1,cadenaAdn[j+1][j+i+1]))
                     diag22 = diag22 + 1
                 else:
                     if diag22 >= MinLenghtArray :
@@ -106,12 +99,12 @@ class ADN:
                     ResIsMutant.idMsj = 4
                     ResIsMutant.msj = 'Es Mutante'
                     ResIsMutant.valid = True
+                    # print('counth:%s countv:%s countobl1:%s countobl2:%s flag:%s'%(countHorizontal,countVertical,countDiagLR,countDiagRL,ResIsMutant.valid))
                     return ResIsMutant
-                    # return True
                 j = j + 1
             i = i + 1
-        print('countHorizontal:%s countVertical:%s countDiagLR:%s countDiagRL:%s'%(countHorizontal,countVertical,countDiagLR,countDiagRL))
         ResIsMutant.idMsj = 5
         ResIsMutant.msj = 'No es mutante'
         ResIsMutant.valid = False
+        # print('counth:%s countv:%s countobl1:%s countobl2:%s flag:%s'%(countHorizontal,countVertical,countDiagLR,countDiagRL,ResIsMutant.valid))
         return ResIsMutant

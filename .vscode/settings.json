@@ -1,3 +1,36 @@
 {
-    "python.pythonPath": "C:\\Users\\wsanchez\\.virtualenvs\\AdnMeli-ZQjfua4B\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\wsanchez\\.virtualenvs\\AdnMeli-ZQjfua4B\\Scripts\\python.exe",
+    "appService.zipIgnorePattern": [
+        "__pycache__{,/**}",
+        "*.py[cod]",
+        "*$py.class",
+        ".Python{,/**}",
+        "build{,/**}",
+        "develop-eggs{,/**}",
+        "dist{,/**}",
+        "downloads{,/**}",
+        "eggs{,/**}",
+        ".eggs{,/**}",
+        "lib{,/**}",
+        "lib64{,/**}",
+        "parts{,/**}",
+        "sdist{,/**}",
+        "var{,/**}",
+        "wheels{,/**}",
+        "share/python-wheels{,/**}",
+        "*.egg-info{,/**}",
+        ".installed.cfg",
+        "*.egg",
+        "MANIFEST",
+        ".env{,/**}",
+        ".venv{,/**}",
+        "env{,/**}",
+        "venv{,/**}",
+        "ENV{,/**}",
+        "env.bak{,/**}",
+        "venv.bak{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/b257e25c-d7a4-48c9-98b1-6190b4c54b42/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/adnmeli",
+    "appService.deploySubpath": "."
 }
